@@ -6,9 +6,12 @@
 package ahorcado;
 
 import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.border.MatteBorder;
 
@@ -22,6 +25,11 @@ public class JuegoAhorcado extends javax.swing.JFrame {
     String palabra;
     boolean jugar=false;
     int contVictoria=0;
+    // Contador, para verificar que ha acertado. 
+    int contHaAcertado=0;
+    int contDerrota=0;
+    String cadena;
+    
     /**
      * Creates new form JuegoAhorcado
      */
@@ -42,6 +50,9 @@ public class JuegoAhorcado extends javax.swing.JFrame {
         
         // Ponemos disabled por defecto. Cuando se pulse en jugar, se activarán
         BuscarLetra.setEnabled(false);
+        
+        // Logo de la aplicación
+        this.setIconImage(new ImageIcon(getClass().getResource("/ahorcado/images/logo.png")).getImage());
     }
 
     /**
@@ -54,10 +65,14 @@ public class JuegoAhorcado extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        jPanel1 = new javax.swing.JPanel();
+        Contenedor = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         ContenedorFigura = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jPanel6 = new javax.swing.JPanel();
         ContenedorLetras = new javax.swing.JPanel();
         Letra1 = new javax.swing.JTextField();
         Letra2 = new javax.swing.JTextField();
@@ -69,11 +84,11 @@ public class JuegoAhorcado extends javax.swing.JFrame {
         BuscarLetra = new javax.swing.JTextField();
         BotonBuscarLetra = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        jlabelFinal = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        Contenedor.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel2.setBackground(new java.awt.Color(13, 13, 13));
 
@@ -99,16 +114,69 @@ public class JuegoAhorcado extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout ContenedorFiguraLayout = new javax.swing.GroupLayout(ContenedorFigura);
-        ContenedorFigura.setLayout(ContenedorFiguraLayout);
-        ContenedorFiguraLayout.setHorizontalGroup(
-            ContenedorFiguraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 229, Short.MAX_VALUE)
+        ContenedorFigura.setBackground(new java.awt.Color(255, 255, 255));
+        ContenedorFigura.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel3.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel3.setPreferredSize(new java.awt.Dimension(147, 5));
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 160, Short.MAX_VALUE)
         );
-        ContenedorFiguraLayout.setVerticalGroup(
-            ContenedorFiguraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 264, Short.MAX_VALUE)
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 3, Short.MAX_VALUE)
         );
+
+        ContenedorFigura.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 217, 160, 3));
+
+        jPanel4.setBackground(new java.awt.Color(0, 0, 0));
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 3, Short.MAX_VALUE)
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 190, Short.MAX_VALUE)
+        );
+
+        ContenedorFigura.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 3, 190));
+
+        jPanel5.setBackground(new java.awt.Color(0, 0, 0));
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 65, Short.MAX_VALUE)
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 3, Short.MAX_VALUE)
+        );
+
+        ContenedorFigura.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 65, 3));
+
+        jPanel6.setBackground(new java.awt.Color(0, 0, 0));
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 3, Short.MAX_VALUE)
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 30, Short.MAX_VALUE)
+        );
+
+        ContenedorFigura.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 30, 3, 30));
 
         ContenedorLetras.setBackground(new java.awt.Color(255, 255, 255));
         ContenedorLetras.setLayout(new java.awt.GridBagLayout());
@@ -211,66 +279,69 @@ public class JuegoAhorcado extends javax.swing.JFrame {
             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
         );
 
-        jLabel4.setText("jLabel4");
+        jlabelFinal.setBackground(new java.awt.Color(204, 0, 0));
+        jlabelFinal.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        jlabelFinal.setForeground(new java.awt.Color(204, 0, 0));
+        jlabelFinal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout ContenedorLayout = new javax.swing.GroupLayout(Contenedor);
+        Contenedor.setLayout(ContenedorLayout);
+        ContenedorLayout.setHorizontalGroup(
+            ContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(ContenedorLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addComponent(ContenedorFigura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(ContenedorLetras, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(ContenedorFigura, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(ContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ContenedorLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(ContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ContenedorLayout.createSequentialGroup()
+                                .addGroup(ContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(BuscarLetra, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(BotonJugar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(56, 56, 56))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ContenedorLayout.createSequentialGroup()
                                 .addComponent(BotonBuscarLetra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(70, 70, 70))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(jLabel4)
+                    .addGroup(ContenedorLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(ContenedorLetras, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE)
                         .addContainerGap())))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ContenedorLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jlabelFinal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        ContenedorLayout.setVerticalGroup(
+            ContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ContenedorLayout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(ContenedorFigura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(ContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(ContenedorLayout.createSequentialGroup()
                         .addComponent(BotonJugar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel4)
-                        .addGap(12, 12, 12)
+                        .addGap(46, 46, 46)
                         .addComponent(BuscarLetra, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(BotonBuscarLetra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(ContenedorLetras, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 39, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(ContenedorLetras, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ContenedorFigura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jlabelFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Contenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(Contenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -282,12 +353,13 @@ public class JuegoAhorcado extends javax.swing.JFrame {
         palabra=palabras.get(n);
         
         vaciarCampos();
+        // Resetear la figura
+        ContenedorFigura.repaint();
         
         BuscarLetra.setEnabled(true);
         jugar=true;
         BotonBuscarLetra.setBackground(new Color(51,51,51));
-        
-        jLabel4.setText(palabra);
+        cadena="";
     }//GEN-LAST:event_jLabel2MouseClicked
 
     public void vaciarCampos() {
@@ -317,31 +389,58 @@ public class JuegoAhorcado extends javax.swing.JFrame {
         if(jugar == true) {
             String text=BuscarLetra.getText();
             BuscarLetra.setText("");
+            contHaAcertado=0;
             
             // Verificamos que sea una letra, y no una palabra.
             if(esLetra(text)){
                 char letra=text.toUpperCase().charAt(0);
+                cadena+=letra;
+                jlabelFinal.setText(cadena+" ");
                 
                 for(int i=0; i<palabra.length(); i++) {
                     if(letra == palabra.charAt(i)) {
-                        switch(i) {
-                            case 0:
-                                Letra1.setText(String.valueOf(letra));
-                                break;
-                            case 1:
-                                Letra2.setText(String.valueOf(letra));
-                                break;
-                            case 2:
-                                Letra3.setText(String.valueOf(letra));
-                                break;
-                            case 3:
-                                Letra4.setText(String.valueOf(letra));
-                                break;
-                            case 4:
-                                Letra5.setText(String.valueOf(letra));
-                                break;
-                        }
+                        rellenarLetras(i, letra);
                         contVictoria++;
+                        contHaAcertado++;
+                    }
+                }
+                
+                // En el caso de que haya fallado, el contHaAcertado será 0. Por tanto, se dibujará una
+                // parte del muñeco. A la vez, se sumará el número de fallos.
+                if(contHaAcertado == 0) {
+                    contDerrota++;
+                    Graphics g=ContenedorFigura.getGraphics();
+                    g.setColor(Color.BLACK);
+                    Graphics2D g2d=(Graphics2D) g;
+                    g2d.setColor(Color.BLACK);
+                    
+                    switch(contDerrota) {
+                        // Primer fallo. Dibujamos cabeza.
+                        case 1:
+                            g.fillOval(97, 49, 35, 35);
+                            break;
+                        // Segundo fallo. Dibujamos el torso
+                        case 2:
+                            g.fillRect(113, 83, 4, 45);
+                            break;
+                        // Tercer fallo. Dibujamos una pierna
+                        case 3:
+                            g2d.rotate(Math.toRadians(20), 113, 128);
+                            g2d.fillRect(113, 126, 4, 40);
+                            break;
+                        // Cuarto fallo. Dibujamos la otra pierna
+                        case 4:
+                            g2d.rotate(-Math.toRadians(20),113,128);
+                            g2d.fillRect(113, 126, 4, 40);
+                            break;
+                        case 5:
+                            g2d.rotate(Math.toRadians(20), 113, 128);
+                            g2d.fillRect(95, 85, 4, 40);
+                            break;
+                        case 6:
+                            g2d.rotate(-Math.toRadians(20),113,128);
+                            g2d.fillRect(130, 85, 4, 40);                            
+                            break;
                     }
                 }
 
@@ -349,14 +448,51 @@ public class JuegoAhorcado extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Caracter no permitido");
             }
             
+            
+            // EL JUGADOR HA GANADO
             if(contVictoria == 5) {
                 JOptionPane.showMessageDialog(this, "HAS GANADO");
-                vaciarCampos();
+                contVictoria=0;
+                contDerrota=0;
+                BotonBuscarLetra.setBackground(new Color(128,128,128));                
+                BuscarLetra.setEnabled(false);
+                jugar=false;
+            }
+            
+            // EL JUGADOR HA PERDIDO
+            if(contDerrota == 6) {
+                jlabelFinal.setText("HAS PERDIDO. LA PALABRA ERA \""+palabra+"\"");
+                BotonBuscarLetra.setBackground(new Color(128,128,128));
+                BuscarLetra.setEnabled(false);
+                jugar=false;
+                
+                contDerrota=0;
                 contVictoria=0;
             }
         }
     }//GEN-LAST:event_jLabel3MouseClicked
 
+    // MÉTODO PARA PONER LAS LETRAS EN SU LUGAR CORRECTO
+    private void rellenarLetras(int i, char letra) {
+        switch (i) {
+            case 0:
+                Letra1.setText(String.valueOf(letra));
+                break;
+            case 1:
+                Letra2.setText(String.valueOf(letra));
+                break;
+            case 2:
+                Letra3.setText(String.valueOf(letra));
+                break;
+            case 3:
+                Letra4.setText(String.valueOf(letra));
+                break;
+            case 4:
+                Letra5.setText(String.valueOf(letra));
+                break;
+        }
+    }
+    
     private void BuscarLetraFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_BuscarLetraFocusLost
         String text=BuscarLetra.getText();
         if(text.equals("")) {
@@ -404,6 +540,7 @@ public class JuegoAhorcado extends javax.swing.JFrame {
     private javax.swing.JPanel BotonBuscarLetra;
     private javax.swing.JPanel BotonJugar;
     private javax.swing.JTextField BuscarLetra;
+    private javax.swing.JPanel Contenedor;
     private javax.swing.JPanel ContenedorFigura;
     private javax.swing.JPanel ContenedorLetras;
     private javax.swing.JTextField Letra1;
@@ -414,8 +551,11 @@ public class JuegoAhorcado extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JLabel jlabelFinal;
     // End of variables declaration//GEN-END:variables
 }
