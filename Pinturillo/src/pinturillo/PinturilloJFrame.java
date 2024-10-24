@@ -8,6 +8,7 @@ package pinturillo;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Graphics;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -21,6 +22,9 @@ public class PinturilloJFrame extends javax.swing.JFrame {
      */
     public PinturilloJFrame() {
         initComponents();
+        
+        this.setIconImage(new ImageIcon(getClass().getResource("/pinturillo/images/logo.png")).getImage());
+
     }
 
     /**
@@ -52,10 +56,10 @@ public class PinturilloJFrame extends javax.swing.JFrame {
         setLocationByPlatform(true);
         setResizable(false);
 
-        Contenedor.setBackground(new java.awt.Color(255, 255, 255));
+        Contenedor.setBackground(new java.awt.Color(237, 237, 237));
 
-        ContenedorPintar.setBackground(new java.awt.Color(250, 250, 250));
-        ContenedorPintar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204), 2));
+        ContenedorPintar.setBackground(new java.awt.Color(255, 255, 255));
+        ContenedorPintar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153), 2));
         ContenedorPintar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
                 ContenedorPintarMouseDragged(evt);
