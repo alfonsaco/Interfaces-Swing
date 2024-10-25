@@ -22,6 +22,7 @@ import javax.swing.border.MatteBorder;
 public class JuegoAhorcado extends javax.swing.JFrame {
 
     ArrayList<String> palabras=new ArrayList<>(Arrays.asList("CIELO", "BOLSA", "PERRO", "LIBRO", "NIEVE", "GOLPE", "MANGO", "SILLA", "FLACO", "TECHO", "PLAZA", "QUESO", "PASTO", "DULCE", "LECHE"));
+    ArrayList<String> repetida=new ArrayList<>();
     String palabra;
     boolean jugar=false;
     int contVictoria=0;
@@ -360,6 +361,7 @@ public class JuegoAhorcado extends javax.swing.JFrame {
         jugar=true;
         BotonBuscarLetra.setBackground(new Color(51,51,51));
         cadena="";
+        jlabelFinal.setText("");
     }//GEN-LAST:event_jLabel2MouseClicked
 
     public void vaciarCampos() {
@@ -387,68 +389,74 @@ public class JuegoAhorcado extends javax.swing.JFrame {
     
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
         if(jugar == true) {
-            String text=BuscarLetra.getText();
+            String text = BuscarLetra.getText();
             BuscarLetra.setText("");
-            contHaAcertado=0;
-            
+            contHaAcertado = 0;
+
             // Verificamos que sea una letra, y no una palabra.
-            if(esLetra(text)){
-                char letra=text.toUpperCase().charAt(0);
-                cadena+=letra;
-                jlabelFinal.setText(cadena+" ");
-                
-                for(int i=0; i<palabra.length(); i++) {
-                    if(letra == palabra.charAt(i)) {
-                        rellenarLetras(i, letra);
-                        contVictoria++;
-                        contHaAcertado++;
+            if (esLetra(text)) {
+                char letra = text.toUpperCase().charAt(0);
+
+                if (!repetida.contains(String.valueOf(letra))) {
+                    repetida.add(String.valueOf(letra));
+                    cadena += letra + " ";
+                    jlabelFinal.setText(cadena);
+
+                    for (int i = 0; i < palabra.length(); i++) {
+                        if (letra == palabra.charAt(i)) {
+                            rellenarLetras(i, letra);
+                            contVictoria++;
+                            contHaAcertado++;
+                        }
                     }
-                }
-                
-                // En el caso de que haya fallado, el contHaAcertado será 0. Por tanto, se dibujará una
-                // parte del muñeco. A la vez, se sumará el número de fallos.
-                if(contHaAcertado == 0) {
-                    contDerrota++;
-                    Graphics g=ContenedorFigura.getGraphics();
-                    g.setColor(Color.BLACK);
-                    Graphics2D g2d=(Graphics2D) g;
-                    g2d.setColor(Color.BLACK);
-                    
-                    switch(contDerrota) {
-                        // Primer fallo. Dibujamos cabeza.
-                        case 1:
-                            g.fillOval(97, 49, 35, 35);
-                            break;
-                        // Segundo fallo. Dibujamos el torso
-                        case 2:
-                            g.fillRect(113, 83, 4, 45);
-                            break;
-                        // Tercer fallo. Dibujamos una pierna
-                        case 3:
-                            g2d.rotate(Math.toRadians(20), 113, 128);
-                            g2d.fillRect(113, 126, 4, 40);
-                            break;
-                        // Cuarto fallo. Dibujamos la otra pierna
-                        case 4:
-                            g2d.rotate(-Math.toRadians(20),113,128);
-                            g2d.fillRect(113, 126, 4, 40);
-                            break;
-                        case 5:
-                            g2d.rotate(Math.toRadians(20), 113, 128);
-                            g2d.fillRect(95, 85, 4, 40);
-                            break;
-                        case 6:
-                            g2d.rotate(-Math.toRadians(20),113,128);
-                            g2d.fillRect(130, 85, 4, 40);                            
-                            break;
+
+                    // En el caso de que haya fallado, el contHaAcertado será 0. Por tanto, se dibujará una
+                    // parte del muñeco. A la vez, se sumará el número de fallos.
+                    if (contHaAcertado == 0) {
+                        contDerrota++;
+                        
+                        Graphics g = ContenedorFigura.getGraphics();
+                        g.setColor(Color.BLACK);
+                        Graphics2D g2d = (Graphics2D) g;
+                        g2d.setColor(Color.BLACK);
+
+                        switch (contDerrota) {
+                            // Primer fallo. Dibujamos cabeza.
+                            case 1:
+                                g.fillOval(97, 49, 35, 35);
+                                break;
+                            // Segundo fallo. Dibujamos el torso
+                            case 2:
+                                g.fillRect(113, 83, 4, 45);
+                                break;
+                            // Tercer fallo. Dibujamos una pierna
+                            case 3:
+                                g2d.rotate(Math.toRadians(20), 113, 128);
+                                g2d.fillRect(113, 126, 4, 40);
+                                break;
+                            // Cuarto fallo. Dibujamos la otra pierna
+                            case 4:
+                                g2d.rotate(-Math.toRadians(20), 113, 128);
+                                g2d.fillRect(113, 126, 4, 40);
+                                break;
+                            case 5:
+                                g2d.rotate(Math.toRadians(20), 113, 128);
+                                g2d.fillRect(95, 85, 4, 40);
+                                break;
+                            case 6:
+                                g2d.rotate(-Math.toRadians(20), 113, 128);
+                                g2d.fillRect(130, 85, 4, 40);
+                                break;
+                        }
                     }
+                } else {
+                    JOptionPane.showMessageDialog(this, "Caracter repetido");
                 }
 
             } else {
                 JOptionPane.showMessageDialog(this, "Caracter no permitido");
             }
-            
-            
+
             // EL JUGADOR HA GANADO
             if(contVictoria == 5) {
                 JOptionPane.showMessageDialog(this, "HAS GANADO");
