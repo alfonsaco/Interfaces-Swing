@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.border.MatteBorder;
 
 /**
@@ -80,7 +81,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         jLabelPass = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
-        jSpinner1 = new javax.swing.JSpinner();
+        jTextFieldEdad = new javax.swing.JTextField();
         jPasswordField1 = new javax.swing.JPasswordField();
         jLabelAge1 = new javax.swing.JLabel();
         jLabelNick1 = new javax.swing.JLabel();
@@ -96,7 +97,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         setLocationByPlatform(true);
         setResizable(false);
 
-        jPanelImagen1.setImagen(new jpanelimagen.ImagenFondo(new java.io.File("C:/Users/PROGRAMACION/Desktop/Interfaces-Swing/South Park/SouthPark/src/southpark/images/village-grande.jpg"), 1.0f));
+        jPanelImagen1.setImagen(new jpanelimagen.ImagenFondo(new java.io.File("C:/Users/PROGRAMACION/Desktop/Interfaces-Swing/South Park/SouthPark/src/southpark/images/village-grande.png"), 1.0f));
 
         ContenedorFormulario.setLayout(new java.awt.GridBagLayout());
 
@@ -127,7 +128,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(12, 0, 4, 0);
         ContenedorFormulario.add(jLabelAge, gridBagConstraints);
 
-        jLabelPass.setForeground(new java.awt.Color(153, 0, 0));
+        jLabelPass.setForeground(new java.awt.Color(0, 0, 0));
         jLabelPass.setText("PASSWORD:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -153,17 +154,18 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 17;
         gridBagConstraints.ipady = 10;
-        gridBagConstraints.insets = new java.awt.Insets(9, 0, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(11, 0, 0, 0);
         ContenedorFormulario.add(jTextField2, gridBagConstraints);
 
-        jSpinner1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 2, true));
+        jTextFieldEdad.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextFieldEdad.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipady = 5;
-        gridBagConstraints.insets = new java.awt.Insets(8, 0, 0, 0);
-        ContenedorFormulario.add(jSpinner1, gridBagConstraints);
+        gridBagConstraints.ipady = 10;
+        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
+        ContenedorFormulario.add(jTextFieldEdad, gridBagConstraints);
 
         jPasswordField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         jPasswordField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
@@ -175,7 +177,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         gridBagConstraints.ipady = 10;
         gridBagConstraints.weightx = 0.3;
         gridBagConstraints.weighty = 0.1;
-        gridBagConstraints.insets = new java.awt.Insets(9, 0, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(6, 0, 0, 0);
         ContenedorFormulario.add(jPasswordField1, gridBagConstraints);
 
         jLabelAge1.setForeground(new java.awt.Color(255, 255, 255));
@@ -313,8 +315,22 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
     // Abrir el dialog al pulsar el botón
     private void textBotonJugarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textBotonJugarMouseClicked
-        PantallaPersonajes dialog=new PantallaPersonajes(this, true);
-        dialog.setVisible(true);
+        // Try catch para verificar que es un número
+        try {
+            int edad=Integer.parseInt(String.valueOf(jTextFieldEdad.getText()));
+                    
+            if(edad < 18) {
+                JOptionPane.showMessageDialog(this, "Debes ser mayor de 18 años","NO ES UN NÚMERO", JOptionPane.ERROR_MESSAGE);
+            } else if(edad < 0) {
+                JOptionPane.showMessageDialog(this, "Edad no válida","NO ES UN NÚMERO", JOptionPane.ERROR_MESSAGE);
+            } else {
+                PantallaPersonajes dialog=new PantallaPersonajes(this, true);
+                dialog.setVisible(true);       
+            }
+            
+        } catch(NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "El valor introducido en EDAD no es un número","NO ES UN NÚMERO", JOptionPane.ERROR_MESSAGE);
+        }       
     }//GEN-LAST:event_textBotonJugarMouseClicked
 
     // Método para cargar la fuente
@@ -380,9 +396,9 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelTituloSombra;
     private jpanelimagen.JPanelImagen jPanelImagen1;
     private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextFieldEdad;
     private javax.swing.JLabel textBotonJugar;
     // End of variables declaration//GEN-END:variables
 }
