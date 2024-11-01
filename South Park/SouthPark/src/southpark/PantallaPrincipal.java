@@ -315,22 +315,26 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
     // Abrir el dialog al pulsar el botón
     private void textBotonJugarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_textBotonJugarMouseClicked
-        // Try catch para verificar que es un número
-        try {
-            int edad=Integer.parseInt(String.valueOf(jTextFieldEdad.getText()));
-                    
-            if(edad < 18) {
-                JOptionPane.showMessageDialog(this, "Debes ser mayor de 18 años","NO ES UN NÚMERO", JOptionPane.ERROR_MESSAGE);
-            } else if(edad < 0) {
-                JOptionPane.showMessageDialog(this, "Edad no válida","NO ES UN NÚMERO", JOptionPane.ERROR_MESSAGE);
-            } else {
-                PantallaPersonajes dialog=new PantallaPersonajes(this, true);
-                dialog.setVisible(true);       
-            }
-            
-        } catch(NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "El valor introducido en EDAD no es un número","NO ES UN NÚMERO", JOptionPane.ERROR_MESSAGE);
-        }       
+        if(!jTextFieldEdad.getText().isEmpty() && !jTextField1.getText().isEmpty() && !jTextField2.getText().isEmpty() && jPasswordField1.getPassword().length != 0) {
+            // Try catch para verificar que es un número
+            try {
+                int edad=Integer.parseInt(String.valueOf(jTextFieldEdad.getText()));
+
+                if(edad < 18) {
+                    JOptionPane.showMessageDialog(this, "Debes ser mayor de 18 años","NO ES UN NÚMERO", JOptionPane.ERROR_MESSAGE);
+                } else if(edad < 0) {
+                    JOptionPane.showMessageDialog(this, "Edad no válida","NO ES UN NÚMERO", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    PantallaPersonajes dialog=new PantallaPersonajes(this, true);
+                    dialog.setVisible(true);       
+                }
+
+            } catch(NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "El valor introducido en EDAD no es un número","NO ES UN NÚMERO", JOptionPane.ERROR_MESSAGE);
+            }                   
+        } else {
+            JOptionPane.showMessageDialog(this, "Faltan campos por rellenar");
+        }
     }//GEN-LAST:event_textBotonJugarMouseClicked
 
     // Método para cargar la fuente
