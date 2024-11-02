@@ -324,6 +324,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Debes ser mayor de 18 años","NO ES UN NÚMERO", JOptionPane.ERROR_MESSAGE);
                 } else if(edad < 0) {
                     JOptionPane.showMessageDialog(this, "Edad no válida","NO ES UN NÚMERO", JOptionPane.ERROR_MESSAGE);
+                } else if(edad > 110) { 
+                    JOptionPane.showMessageDialog(this, "La edad es demasiado alta para ser real","EDAD IRREAL", JOptionPane.ERROR_MESSAGE);
                 } else {
                     PantallaPersonajes dialog=new PantallaPersonajes(this, true);
                     dialog.setVisible(true);       
