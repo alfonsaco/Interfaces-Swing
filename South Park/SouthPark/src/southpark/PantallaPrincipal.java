@@ -97,7 +97,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         setLocationByPlatform(true);
         setResizable(false);
 
-        jPanelImagen1.setImagen(new jpanelimagen.ImagenFondo(new java.io.File("C:/Users/PROGRAMACION/Desktop/Interfaces-Swing/South Park/SouthPark/src/southpark/images/village-grande.png"), 1.0f));
+        jPanelImagen1.setImagen(new jpanelimagen.ImagenFondo(new java.io.File("C:/Users/PROGRAMACION/Desktop/Interfaces-Swing/South Park/SouthPark/src/southpark/images/village-grande.png"), 0.94f));
 
         ContenedorFormulario.setLayout(new java.awt.GridBagLayout());
 
@@ -206,6 +206,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         ContenedorFormulario.add(jLabelName1, gridBagConstraints);
 
+        jLabelPass1.setBackground(new java.awt.Color(204, 153, 0));
         jLabelPass1.setForeground(new java.awt.Color(255, 255, 255));
         jLabelPass1.setText("PASSWORD:");
         gridBagConstraints = new java.awt.GridBagConstraints();
