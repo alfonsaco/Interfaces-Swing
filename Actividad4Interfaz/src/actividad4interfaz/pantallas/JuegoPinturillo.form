@@ -53,7 +53,7 @@
     <Container class="javax.swing.JPanel" name="ContenedorGeneral">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="d" green="d" red="d" type="rgb"/>
+          <Color blue="6" green="6" red="6" type="rgb"/>
         </Property>
       </Properties>
 

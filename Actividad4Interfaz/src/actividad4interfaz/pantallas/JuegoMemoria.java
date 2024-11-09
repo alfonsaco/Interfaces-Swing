@@ -35,23 +35,87 @@ public class JuegoMemoria extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                formKeyTyped(evt);
+            }
+        });
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 59, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 32, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(118, 118, 118)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(223, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(82, 82, 82)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(186, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void formKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyTyped
+        int tecla=evt.getKeyCode();
+        if(tecla == java.awt.event.KeyEvent.VK_LEFT) {
+        // Mueve el panel a la izquierda
+        jPanel1.setBounds(jPanel1.getX() - 5, jPanel1.getY(), jPanel1.getWidth(), jPanel1.getHeight());
+    } else if(tecla == java.awt.event.KeyEvent.VK_RIGHT) {
+        // Mueve el panel a la derecha
+        jPanel1.setBounds(jPanel1.getX() + 5, jPanel1.getY(), jPanel1.getWidth(), jPanel1.getHeight());
+    } else if(tecla == java.awt.event.KeyEvent.VK_UP) {
+        // Mueve el panel hacia arriba
+        jPanel1.setBounds(jPanel1.getX(), jPanel1.getY() - 5, jPanel1.getWidth(), jPanel1.getHeight());
+    } else if(tecla == java.awt.event.KeyEvent.VK_DOWN) {
+        // Mueve el panel hacia abajo
+        jPanel1.setBounds(jPanel1.getX(), jPanel1.getY() + 5, jPanel1.getWidth(), jPanel1.getHeight());
+    }
+    }//GEN-LAST:event_formKeyTyped
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        int tecla=evt.getKeyCode();
+        if(tecla == java.awt.event.KeyEvent.VK_LEFT) {
+        // Mueve el panel a la izquierda
+        jPanel1.setBounds(jPanel1.getX() - 5, jPanel1.getY(), jPanel1.getWidth(), jPanel1.getHeight());
+    } else if(tecla == java.awt.event.KeyEvent.VK_RIGHT) {
+        // Mueve el panel a la derecha
+        jPanel1.setBounds(jPanel1.getX() + 5, jPanel1.getY(), jPanel1.getWidth(), jPanel1.getHeight());
+    } else if(tecla == java.awt.event.KeyEvent.VK_UP) {
+        // Mueve el panel hacia arriba
+        jPanel1.setBounds(jPanel1.getX(), jPanel1.getY() - 5, jPanel1.getWidth(), jPanel1.getHeight());
+    } else if(tecla == java.awt.event.KeyEvent.VK_DOWN) {
+        // Mueve el panel hacia abajo
+        jPanel1.setBounds(jPanel1.getX(), jPanel1.getY() + 5, jPanel1.getWidth(), jPanel1.getHeight());
+    }
+    }//GEN-LAST:event_formKeyPressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

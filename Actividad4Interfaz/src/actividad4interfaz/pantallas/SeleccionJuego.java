@@ -1,3 +1,5 @@
+package actividad4interfaz.pantallas;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -7,6 +9,7 @@ import actividad4interfaz.pantallas.Fuente;
 import actividad4interfaz.pantallas.JuegoMemoria;
 import actividad4interfaz.pantallas.JuegoPPT;
 import actividad4interfaz.pantallas.JuegoPinturillo;
+import java.applet.AudioClip;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.BorderFactory;
@@ -28,11 +31,19 @@ public class SeleccionJuego extends javax.swing.JFrame {
     MatteBorder bordeExteriorFinal;
     MatteBorder bordeExterior;
     MatteBorder bordeInterno;
+    AudioClip change;
+    
+    private String nombre;
+    private String email;
     /**
      * Creates new form SeleccionJuego
      */
-    public SeleccionJuego() {
+    public SeleccionJuego(String nombre, String email) {
         initComponents();
+        
+        // Datos heredados
+        this.nombre=nombre;
+        this.email=email;
         
         // Estilos de la pantalla 
         this.setLocationRelativeTo(null);
@@ -42,7 +53,7 @@ public class SeleccionJuego extends javax.swing.JFrame {
         
         // Borde de los botones
         bordeInterno=BorderFactory.createMatteBorder(1, 0, 1, 0, new Color(255, 25, 0));
-        bordeExterior=BorderFactory.createMatteBorder(2, 0, 2, 0, new Color(255, 25, 0, 50));
+        bordeExterior=BorderFactory.createMatteBorder(2, 0, 2, 0, new Color(255, 25, 0, 70));
         bordeExteriorFinal=BorderFactory.createMatteBorder(4, 0, 4, 0, new Color(255, 25, 0, 15));
         bordeCompuesto=new CompoundBorder(bordeExterior, bordeInterno);
         bordeCompuestoFinal=new CompoundBorder(bordeExteriorFinal, bordeCompuesto);
@@ -53,6 +64,12 @@ public class SeleccionJuego extends javax.swing.JFrame {
         if(fuente != null){
             LabelBotonJugar.setFont(fuente);
         }
+        
+        // Palabras heredadas de la otra clase
+        jLabelUsuario.setText(nombre);
+        jLabelEmail.setText(email);
+        
+        change=java.applet.Applet.newAudioClip(getClass().getResource("/actividad4interfaz/audio/change.wav"));
     }
 
     /**
@@ -95,6 +112,12 @@ public class SeleccionJuego extends javax.swing.JFrame {
             String[] strings = { "              PINTURILLO", "      JUEGO DE MEMORIA", "  PIEDRA, PAPEL Y TIJERAS" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
+        });
+        ListaJuegos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        ListaJuegos.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                ListaJuegosValueChanged(evt);
+            }
         });
         jScrollPane1.setViewportView(ListaJuegos);
 
@@ -233,41 +256,10 @@ public class SeleccionJuego extends javax.swing.JFrame {
         BotonJugar.setBorder(null);
     }//GEN-LAST:event_LabelBotonJugarMouseExited
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SeleccionJuego.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SeleccionJuego.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SeleccionJuego.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SeleccionJuego.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-JFrame.setDefaultLookAndFeelDecorated(true);
-        SubstanceLookAndFeel.setSkin("org.jvnet.substance.skin.RavenSkin");
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new SeleccionJuego().setVisible(true);
-            }
-        });
-    }
+    private void ListaJuegosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_ListaJuegosValueChanged
+        change.play();
+    }//GEN-LAST:event_ListaJuegosValueChanged
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BotonJugar;

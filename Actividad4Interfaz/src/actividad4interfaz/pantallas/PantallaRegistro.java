@@ -5,6 +5,10 @@
  */
 package actividad4interfaz.pantallas;
 
+import actividad4interfaz.pantallas.Fuente;
+import actividad4interfaz.pantallas.Fuente;
+import actividad4interfaz.pantallas.SeleccionJuego;
+import actividad4interfaz.pantallas.SeleccionJuego;
 import java.applet.AudioClip;
 import java.awt.Color;
 import java.awt.Font;
@@ -18,7 +22,7 @@ import javax.swing.border.MatteBorder;
 
 /**
  *
- * @author PROGRAMACION
+ * @author Alfonso
  */
 public class PantallaRegistro extends javax.swing.JFrame {
 
@@ -57,7 +61,7 @@ public class PantallaRegistro extends javax.swing.JFrame {
         
         // Borde del botón
         bordeInterno=BorderFactory.createMatteBorder(1, 0, 1, 0, new Color(255, 25, 0));
-        bordeExterior=BorderFactory.createMatteBorder(2, 0, 2, 0, new Color(255, 25, 0, 50));
+        bordeExterior=BorderFactory.createMatteBorder(2, 0, 2, 0, new Color(255, 25, 0, 70));
         bordeExteriorFinal=BorderFactory.createMatteBorder(4, 0, 4, 0, new Color(255, 25, 0, 15));
         bordeCompuesto=new CompoundBorder(bordeExterior, bordeInterno);
         bordeCompuestoFinal=new CompoundBorder(bordeExteriorFinal, bordeCompuesto);

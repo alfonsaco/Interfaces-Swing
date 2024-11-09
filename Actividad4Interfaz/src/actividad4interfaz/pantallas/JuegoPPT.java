@@ -18,6 +18,8 @@ public class JuegoPPT extends javax.swing.JDialog {
 
     Border bordeActivo=BorderFactory.createLineBorder(Color.WHITE, 2);
     int valor;
+    int contCPU=0;
+    int contJug=0;
     /**
      * Creates new form JuegoPPT
      */
@@ -41,8 +43,6 @@ public class JuegoPPT extends javax.swing.JDialog {
     private void initComponents() {
 
         ContenedorGeneral = new javax.swing.JPanel();
-        BotonReset = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
         BotonPiedra = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         BotonPapel = new javax.swing.JPanel();
@@ -52,39 +52,17 @@ public class JuegoPPT extends javax.swing.JDialog {
         jLabelCPU = new javax.swing.JLabel();
         jLabelJugador = new javax.swing.JLabel();
         jLabelResultado = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        ContJugador = new javax.swing.JLabel();
+        ContCPU1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        ContenedorGeneral.setBackground(new java.awt.Color(18, 18, 18));
+        ContenedorGeneral.setBackground(new java.awt.Color(6, 6, 6));
         ContenedorGeneral.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        BotonReset.setBackground(new java.awt.Color(43, 43, 43));
-
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(235, 235, 235));
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setText("RESET");
-        jLabel3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel3MouseClicked(evt);
-            }
-        });
-
-        javax.swing.GroupLayout BotonResetLayout = new javax.swing.GroupLayout(BotonReset);
-        BotonReset.setLayout(BotonResetLayout);
-        BotonResetLayout.setHorizontalGroup(
-            BotonResetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-        );
-        BotonResetLayout.setVerticalGroup(
-            BotonResetLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
-        );
-
-        ContenedorGeneral.add(BotonReset, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, 150, 60));
-
-        BotonPiedra.setBackground(new java.awt.Color(86, 86, 86));
+        BotonPiedra.setBackground(new java.awt.Color(46, 46, 46));
+        BotonPiedra.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.black, java.awt.Color.gray, null, null));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(235, 235, 235));
@@ -101,16 +79,17 @@ public class JuegoPPT extends javax.swing.JDialog {
         BotonPiedra.setLayout(BotonPiedraLayout);
         BotonPiedraLayout.setHorizontalGroup(
             BotonPiedraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
         );
         BotonPiedraLayout.setVerticalGroup(
             BotonPiedraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
         );
 
-        ContenedorGeneral.add(BotonPiedra, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 180, 120, 50));
+        ContenedorGeneral.add(BotonPiedra, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 120, 50));
 
-        BotonPapel.setBackground(new java.awt.Color(86, 86, 86));
+        BotonPapel.setBackground(new java.awt.Color(46, 46, 46));
+        BotonPapel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.black, java.awt.Color.lightGray, null, null));
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(235, 235, 235));
@@ -127,16 +106,17 @@ public class JuegoPPT extends javax.swing.JDialog {
         BotonPapel.setLayout(BotonPapelLayout);
         BotonPapelLayout.setHorizontalGroup(
             BotonPapelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
         );
         BotonPapelLayout.setVerticalGroup(
             BotonPapelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        ContenedorGeneral.add(BotonPapel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 110, -1));
+        ContenedorGeneral.add(BotonPapel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 110, -1));
 
-        BotonTijeras.setBackground(new java.awt.Color(86, 86, 86));
+        BotonTijeras.setBackground(new java.awt.Color(46, 46, 46));
+        BotonTijeras.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.black, java.awt.Color.lightGray, null, null));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(235, 235, 235));
@@ -160,14 +140,32 @@ public class JuegoPPT extends javax.swing.JDialog {
             .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
-        ContenedorGeneral.add(BotonTijeras, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 180, -1, -1));
+        ContenedorGeneral.add(BotonTijeras, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 240, -1, -1));
 
         jLabelCPU.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        ContenedorGeneral.add(jLabelCPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 50, 140, 100));
+        ContenedorGeneral.add(jLabelCPU, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, 120, 100));
 
         jLabelJugador.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        ContenedorGeneral.add(jLabelJugador, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, 140, 100));
-        ContenedorGeneral.add(jLabelResultado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 6, 510, 50));
+        ContenedorGeneral.add(jLabelJugador, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 120, 100));
+
+        jLabelResultado.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabelResultado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ContenedorGeneral.add(jLabelResultado, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 46, 220, 60));
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 48)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("VS");
+        ContenedorGeneral.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, 70, -1));
+
+        ContJugador.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        ContJugador.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ContJugador.setText("0");
+        ContenedorGeneral.add(ContJugador, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, 80, 60));
+
+        ContCPU1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        ContCPU1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        ContCPU1.setText("0");
+        ContenedorGeneral.add(ContCPU1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 30, 80, 60));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -177,7 +175,7 @@ public class JuegoPPT extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(ContenedorGeneral, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
+            .addComponent(ContenedorGeneral, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -188,7 +186,7 @@ public class JuegoPPT extends javax.swing.JDialog {
         BotonPapel.setBorder(null);
         BotonTijeras.setBorder(null);
         
-        jLabelJugador.setText("PIEDRA");
+        jLabelJugador.setIcon(new ImageIcon(getClass().getResource("/actividad4interfaz/images/Piedra.png")));
         valor=1;
         comenzarJuego(valor);
     }//GEN-LAST:event_jLabel4MouseClicked
@@ -199,7 +197,7 @@ public class JuegoPPT extends javax.swing.JDialog {
         BotonTijeras.setBorder(null);
         
         
-        jLabelJugador.setText("PAPEL");
+        jLabelJugador.setIcon(new ImageIcon(getClass().getResource("/actividad4interfaz/images/Papel.png")));
         valor=2;
         comenzarJuego(valor);
     }//GEN-LAST:event_jLabel5MouseClicked
@@ -209,44 +207,45 @@ public class JuegoPPT extends javax.swing.JDialog {
         BotonPapel.setBorder(null);
         BotonTijeras.setBorder(bordeActivo);
         
-        jLabelJugador.setText("TIJERA");
+        jLabelJugador.setIcon(new ImageIcon(getClass().getResource("/actividad4interfaz/images/Tijera_1.png")));
         valor=3;
         comenzarJuego(valor);
     }//GEN-LAST:event_jLabel6MouseClicked
 
-    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
-        BotonPiedra.setBorder(null);
-        BotonPapel.setBorder(null);
-        BotonTijeras.setBorder(null);
-    }//GEN-LAST:event_jLabel3MouseClicked
-
     public void comenzarJuego(int valor) {
         int cpu=(int) (1+Math.random()*3);
         
+        // Poner el icono en el jLabel del CPU
         if(cpu==1) {
-            jLabelCPU.setText("PIEDRA");
+            jLabelCPU.setIcon(new ImageIcon(getClass().getResource("/actividad4interfaz/images/Piedra.png")));
         } else if(cpu == 2) {
-            jLabelCPU.setText("PAPEL");
+            jLabelCPU.setIcon(new ImageIcon(getClass().getResource("/actividad4interfaz/images/Papel.png")));
         } else if(cpu == 3) {
-            jLabelCPU.setText("TIJERA");
-        }                
+            jLabelCPU.setIcon(new ImageIcon(getClass().getResource("/actividad4interfaz/images/Tijera_1.png")));
+        }                                
         
+        // Decidir quien gana
         if(valor == cpu) {
             jLabelResultado.setText("EMPATE");
         } else if((valor == 1 && cpu == 2) || (valor == 2 && cpu == 3) || (valor == 3 && cpu == 1)) {
             jLabelResultado.setText("HAS PERDIDO");
+            contCPU++;
+            ContCPU1.setText(String.valueOf(contCPU));
         } else {
             jLabelResultado.setText("HAS GANADO");
+            contJug++;
+            ContJugador.setText(String.valueOf(contJug));
         }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BotonPapel;
     private javax.swing.JPanel BotonPiedra;
-    private javax.swing.JPanel BotonReset;
     private javax.swing.JPanel BotonTijeras;
+    private javax.swing.JLabel ContCPU1;
+    private javax.swing.JLabel ContJugador;
     private javax.swing.JPanel ContenedorGeneral;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

@@ -74,7 +74,7 @@ public class JuegoPinturillo extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        ContenedorGeneral.setBackground(new java.awt.Color(13, 13, 13));
+        ContenedorGeneral.setBackground(new java.awt.Color(6, 6, 6));
         ContenedorGeneral.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         ContenedorColores.setBackground(new java.awt.Color(255, 255, 255));
