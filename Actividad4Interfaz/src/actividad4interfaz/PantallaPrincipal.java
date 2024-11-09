@@ -5,6 +5,7 @@
  */
 package actividad4interfaz;
 
+import actividad4interfaz.pantallas.Fuente;
 import actividad4interfaz.pantallas.PantallaRegistro;
 import java.applet.AudioClip;
 import java.awt.Color;
@@ -14,8 +15,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.MatteBorder;
+import org.jvnet.substance.SubstanceLookAndFeel;
 
 /**
  *
@@ -40,17 +43,18 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.setSize(550, 410);
-        this.setIconImage(new ImageIcon(getClass().getResource("/actividad4interfaz/images/logo.png")).getImage());
+        this.setIconImage(new ImageIcon(getClass().getResource("/actividad4interfaz/images/icono.png")).getImage());
         
         // Borde de los botones
-        bordeInterno=BorderFactory.createMatteBorder(1, 0, 1, 0, new Color(255, 149, 0));
-        bordeExterior=BorderFactory.createMatteBorder(2, 0, 2, 0, new Color(255, 149, 0, 50));
-        bordeExteriorFinal=BorderFactory.createMatteBorder(3, 0, 3, 0, new Color(255, 149, 0, 15));
+        bordeInterno=BorderFactory.createMatteBorder(1, 0, 1, 0, new Color(255, 25, 0));
+        bordeExterior=BorderFactory.createMatteBorder(2, 0, 2, 0, new Color(255, 25, 0, 50));
+        bordeExteriorFinal=BorderFactory.createMatteBorder(4, 0, 4, 0, new Color(255, 25, 0, 15));
         bordeCompuesto=new CompoundBorder(bordeExterior, bordeInterno);
         bordeCompuestoFinal=new CompoundBorder(bordeExteriorFinal, bordeCompuesto);
         
         // Fuente
-        Font fuente=cargarFuente("/actividad4interfaz/fonts/Roboto-Thin.ttf", 30f);
+        Fuente cambiarFuente=new Fuente();
+        Font fuente=cambiarFuente.cargarFuente("/actividad4interfaz/fonts/Roboto-Thin.ttf", 30f);
         if(fuente != null){
             LabelBotonJugar.setFont(fuente);
             LabelBotonSalir.setFont(fuente);
@@ -58,8 +62,10 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         
         // Estilos de los botones
         Color transparente=new Color(0,0,0,0);
-        BotonJugar.setBackground(transparente);        
+        BotonJugar.setBackground(transparente);      
+        BotonJugar.setOpaque(false);
         BotonSalir.setBackground(transparente);
+        BotonSalir.setOpaque(false);
         
         // Audio
         change=java.applet.Applet.newAudioClip(getClass().getResource("/actividad4interfaz/audio/change.wav"));
@@ -81,20 +87,21 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         LabelBotonJugar = new javax.swing.JLabel();
         BotonSalir = new javax.swing.JPanel();
         LabelBotonSalir = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        ContenedorFondo.setBackground(new java.awt.Color(11, 11, 11));
+        ContenedorFondo.setBackground(new java.awt.Color(0, 0, 0));
         ContenedorFondo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/actividad4interfaz/images/logo.png"))); // NOI18N
-        jLabel2.setText("jLabel2");
-        ContenedorFondo.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 220, 160));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/actividad4interfaz/images/logoRojo.png"))); // NOI18N
+        ContenedorFondo.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 530, 190));
 
         BotonJugar.setBackground(new java.awt.Color(13, 13, 13));
 
         LabelBotonJugar.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
-        LabelBotonJugar.setForeground(new java.awt.Color(255, 149, 0));
+        LabelBotonJugar.setForeground(new java.awt.Color(255, 25, 0));
         LabelBotonJugar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LabelBotonJugar.setText("JUGAR");
         LabelBotonJugar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -121,12 +128,12 @@ public class PantallaPrincipal extends javax.swing.JFrame {
             .addComponent(LabelBotonJugar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
-        ContenedorFondo.add(BotonJugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 230, 60));
+        ContenedorFondo.add(BotonJugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 230, 230, 60));
 
         BotonSalir.setBackground(new java.awt.Color(13, 13, 13));
 
         LabelBotonSalir.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
-        LabelBotonSalir.setForeground(new java.awt.Color(255, 149, 0));
+        LabelBotonSalir.setForeground(new java.awt.Color(255, 25, 0));
         LabelBotonSalir.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LabelBotonSalir.setText("SALIR");
         LabelBotonSalir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -153,7 +160,10 @@ public class PantallaPrincipal extends javax.swing.JFrame {
             .addComponent(LabelBotonSalir, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
         );
 
-        ContenedorFondo.add(BotonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 280, 230, 60));
+        ContenedorFondo.add(BotonSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, 230, 60));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/actividad4interfaz/images/fondo1.png"))); // NOI18N
+        ContenedorFondo.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 410));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -163,7 +173,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(ContenedorFondo, javax.swing.GroupLayout.DEFAULT_SIZE, 381, Short.MAX_VALUE)
+            .addComponent(ContenedorFondo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -235,6 +245,8 @@ public class PantallaPrincipal extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(PantallaPrincipal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        JFrame.setDefaultLookAndFeelDecorated(true);
+        SubstanceLookAndFeel.setSkin("org.jvnet.substance.skin.RavenSkin");
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -242,19 +254,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
                 new PantallaPrincipal().setVisible(true);
             }
         });
-    }
-    
-    // Método para cargar la fuente
-    private Font cargarFuente(String ruta, float tamaño) {
-        try {
-            InputStream fontStream = getClass().getResourceAsStream(ruta);
-            Font font = Font.createFont(Font.TRUETYPE_FONT, fontStream);
-            return font.deriveFont(tamaño);
-        } catch (FontFormatException | IOException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
+    }    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel BotonJugar;
@@ -262,6 +262,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private javax.swing.JPanel ContenedorFondo;
     private javax.swing.JLabel LabelBotonJugar;
     private javax.swing.JLabel LabelBotonSalir;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
