@@ -286,7 +286,7 @@ public class PantallaRegistro extends javax.swing.JFrame {
 
     // VERIFICAR QUE EL EMAIL ES VÁLIDO
     private boolean esEmail(String email) {
-        return email.matches("[a-zA-Z0-9_%]+@[a-zA-Z]+\\.[a-zA-Z]+");
+        return email.matches("[a-zA-Z0-9_.%]+@[a-zA-Z]+\\.[a-zA-Z]+");
     }
     
     private void LabelBotonJugarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LabelBotonJugarMouseEntered

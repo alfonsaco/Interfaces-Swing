@@ -62,7 +62,6 @@ public class JuegoPPT extends javax.swing.JDialog {
         ContenedorGeneral.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         BotonPiedra.setBackground(new java.awt.Color(46, 46, 46));
-        BotonPiedra.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.black, java.awt.Color.gray, null, null));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(235, 235, 235));
@@ -79,17 +78,16 @@ public class JuegoPPT extends javax.swing.JDialog {
         BotonPiedra.setLayout(BotonPiedraLayout);
         BotonPiedraLayout.setHorizontalGroup(
             BotonPiedraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
         );
         BotonPiedraLayout.setVerticalGroup(
             BotonPiedraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
         );
 
         ContenedorGeneral.add(BotonPiedra, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 120, 50));
 
         BotonPapel.setBackground(new java.awt.Color(46, 46, 46));
-        BotonPapel.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.black, java.awt.Color.lightGray, null, null));
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(235, 235, 235));
@@ -106,7 +104,7 @@ public class JuegoPPT extends javax.swing.JDialog {
         BotonPapel.setLayout(BotonPapelLayout);
         BotonPapelLayout.setHorizontalGroup(
             BotonPapelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 106, Short.MAX_VALUE)
+            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
         );
         BotonPapelLayout.setVerticalGroup(
             BotonPapelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -116,7 +114,6 @@ public class JuegoPPT extends javax.swing.JDialog {
         ContenedorGeneral.add(BotonPapel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 240, 110, -1));
 
         BotonTijeras.setBackground(new java.awt.Color(46, 46, 46));
-        BotonTijeras.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED, java.awt.Color.black, java.awt.Color.lightGray, null, null));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(235, 235, 235));

@@ -6,7 +6,7 @@ package actividad4interfaz.pantallas;
  * and open the template in the editor.
  */
 import actividad4interfaz.pantallas.Fuente;
-import actividad4interfaz.pantallas.JuegoMemoria;
+import actividad4interfaz.pantallas.JuegoAhorcado;
 import actividad4interfaz.pantallas.JuegoPPT;
 import actividad4interfaz.pantallas.JuegoPinturillo;
 import java.applet.AudioClip;
@@ -109,7 +109,7 @@ public class SeleccionJuego extends javax.swing.JFrame {
         ListaJuegos.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         ListaJuegos.setForeground(new java.awt.Color(255, 255, 255));
         ListaJuegos.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "              PINTURILLO", "      JUEGO DE MEMORIA", "  PIEDRA, PAPEL Y TIJERAS" };
+            String[] strings = { "              PINTURILLO", "  PIEDRA, PAPEL Y TIJERAS", "              AHORCADO" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
@@ -235,8 +235,8 @@ public class SeleccionJuego extends javax.swing.JFrame {
             case "              PINTURILLO":
                 new JuegoPinturillo(this, true).setVisible(true);                
                 break;
-            case "      JUEGO DE MEMORIA":
-                new JuegoMemoria(this, true).setVisible(true);
+            case "              AHORCADO":
+                new JuegoAhorcado(this, true).setVisible(true);
                 break;
             case "  PIEDRA, PAPEL Y TIJERAS":
                 new JuegoPPT(this, true).setVisible(true);
