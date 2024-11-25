@@ -182,11 +182,6 @@ public class PantallaRegistro extends javax.swing.JFrame {
         jPasswordFieldContra.setBackground(new java.awt.Color(27, 27, 27));
         jPasswordFieldContra.setForeground(new java.awt.Color(231, 231, 231));
         jPasswordFieldContra.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(102, 102, 102)));
-        jPasswordFieldContra.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jPasswordFieldContraFocusGained(evt);
-            }
-        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
@@ -301,19 +296,15 @@ public class PantallaRegistro extends javax.swing.JFrame {
         BotonEntrar.setBorder(null);
     }//GEN-LAST:event_LabelBotonJugarMouseExited
 
-    // PLACEHOLDERS
+    // PLACEHOLDERS PARA EL USUARIO Y EL EMAIL
     private void jTextFieldUsuarioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldUsuarioFocusGained
         String texto=jTextFieldUsuario.getText();
-        
+               
         if(texto.equals("NOMBRE DE USUARIO...")) {
             jTextFieldUsuario.setText("");
             jTextFieldUsuario.setForeground(new Color(231,231,231));
         }
     }//GEN-LAST:event_jTextFieldUsuarioFocusGained
-
-    private void jPasswordFieldContraFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPasswordFieldContraFocusGained
-        
-    }//GEN-LAST:event_jPasswordFieldContraFocusGained
 
     private void jTextFieldUsuarioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldUsuarioFocusLost
         String texto=jTextFieldUsuario.getText();

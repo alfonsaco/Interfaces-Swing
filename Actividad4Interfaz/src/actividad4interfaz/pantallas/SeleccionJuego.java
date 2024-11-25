@@ -230,7 +230,7 @@ public class SeleccionJuego extends javax.swing.JFrame {
     }//GEN-LAST:event_LabelBotonJugarMouseClicked
 
     // Método para abrir la ventana de juego
-    private void abrirJuego(String juego) {
+    private void abrirJuego(String juego) {     
         switch(juego) {
             case "              PINTURILLO":
                 new JuegoPinturillo(this, true).setVisible(true);                
@@ -244,6 +244,7 @@ public class SeleccionJuego extends javax.swing.JFrame {
         }
     }
     
+    // HOVER DEL BOTÓN
     private void LabelBotonJugarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LabelBotonJugarMouseEntered
         ContenedorSeleccion.repaint();
         ContenedorSeleccion.revalidate();
@@ -256,6 +257,7 @@ public class SeleccionJuego extends javax.swing.JFrame {
         BotonJugar.setBorder(null);
     }//GEN-LAST:event_LabelBotonJugarMouseExited
 
+    // SE REPRODUCE UN SONIDO AL CAMBIAR DE SELECCIÓN DE LA JLIST
     private void ListaJuegosValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_ListaJuegosValueChanged
         change.play();
     }//GEN-LAST:event_ListaJuegosValueChanged

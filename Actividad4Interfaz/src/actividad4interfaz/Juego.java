@@ -11,7 +11,7 @@ import org.jvnet.substance.SubstanceLookAndFeel;
 
 /**
  *
- * @author PROGRAMACION
+ * @author Alfonso
  */
 public class Juego {
 
@@ -19,9 +19,10 @@ public class Juego {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        // Aplicamos un Look and Feel
         JFrame.setDefaultLookAndFeelDecorated(true);
         SubstanceLookAndFeel.setSkin("org.jvnet.substance.skin.RavenSkin");
-        
+        // Abrimos el juego
         PantallaPrincipal p=new PantallaPrincipal();
         p.setVisible(true);                
     }

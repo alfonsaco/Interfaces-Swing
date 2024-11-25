@@ -179,6 +179,7 @@ public class JuegoPPT extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        // Poner un borde blanco al botón seleccionado
         BotonPiedra.setBorder(bordeActivo);
         BotonPapel.setBorder(null);
         BotonTijeras.setBorder(null);
@@ -204,6 +205,7 @@ public class JuegoPPT extends javax.swing.JDialog {
         BotonPapel.setBorder(null);
         BotonTijeras.setBorder(bordeActivo);
         
+        // Ponemos el icono y devolvemos el valor
         jLabelJugador.setIcon(new ImageIcon(getClass().getResource("/actividad4interfaz/images/Tijera_1.png")));
         valor=3;
         comenzarJuego(valor);

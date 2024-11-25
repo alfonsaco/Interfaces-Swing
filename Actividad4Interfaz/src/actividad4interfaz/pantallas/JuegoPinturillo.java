@@ -11,7 +11,7 @@ import javax.swing.ImageIcon;
 
 /**
  *
- * @author PROGRAMACION
+ * @author Alfonso
  */
 public class JuegoPinturillo extends javax.swing.JDialog {
 
@@ -28,7 +28,7 @@ public class JuegoPinturillo extends javax.swing.JDialog {
         this.setResizable(false);
         this.setIconImage(new ImageIcon(getClass().getResource("/actividad4interfaz/images/icono.png")).getImage());
         
-        // Color 
+        // Color del pincel
         color=Color.BLACK;
     }
 
@@ -409,6 +409,7 @@ public class JuegoPinturillo extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void ContenedorPintarMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ContenedorPintarMouseDragged
+        // Importamos la clase Graphics para poder dibujar óvalos en la pantalla
         Graphics dibujo=ContenedorPintar.getGraphics();
         dibujo.setColor(color);
         dibujo.fillOval(evt.getX()-SliderTamaño.getValue()/2, evt.getY()-SliderTamaño.getValue()/2, SliderTamaño.getValue(), SliderTamaño.getValue());
@@ -423,6 +424,7 @@ public class JuegoPinturillo extends javax.swing.JDialog {
         BotonLimpiar.setBackground(new Color(255,51,51));
     }//GEN-LAST:event_jLabel1MouseExited
 
+    // Reseteamos la pantalla para limpiarla
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         ContenedorPintar.revalidate();        
         ContenedorPintar.repaint();

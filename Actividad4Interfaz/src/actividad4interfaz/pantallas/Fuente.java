@@ -19,6 +19,7 @@ public class Fuente {
     public Font cargarFuente(String ruta, float tamaño) {
         try {
             InputStream fontStream = getClass().getResourceAsStream(ruta);
+            // Importamos la clase font. Se le pasará como parámetro el tamaño y la ruta
             Font font = Font.createFont(Font.TRUETYPE_FONT, fontStream);
             return font.deriveFont(tamaño);
         } catch (FontFormatException | IOException e) {

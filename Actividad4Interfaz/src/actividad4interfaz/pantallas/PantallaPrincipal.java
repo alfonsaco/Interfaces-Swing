@@ -21,7 +21,7 @@ import org.jvnet.substance.SubstanceLookAndFeel;
 
 /**
  *
- * @author PROGRAMACION
+ * @author Alfonso
  */
 public class PantallaPrincipal extends javax.swing.JFrame {
 
@@ -48,6 +48,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
         bordeInterno=BorderFactory.createMatteBorder(1, 0, 1, 0, new Color(255, 25, 0));
         bordeExterior=BorderFactory.createMatteBorder(2, 0, 2, 0, new Color(255, 25, 0, 70));
         bordeExteriorFinal=BorderFactory.createMatteBorder(4, 0, 4, 0, new Color(255, 25, 0, 15));
+        // Borde compuesto, para poder dar un efecto de degradado
         bordeCompuesto=new CompoundBorder(bordeExterior, bordeInterno);
         bordeCompuestoFinal=new CompoundBorder(bordeExteriorFinal, bordeCompuesto);
         
@@ -185,6 +186,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
     private void LabelBotonSalirMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LabelBotonSalirMouseEntered
         change.play();
+        // Volvemos a pintar el contenedor, porque da errores visuales. 
         ContenedorFondo.repaint();
         ContenedorFondo.revalidate();
         BotonSalir.setBorder(bordeCompuestoFinal);        
@@ -193,6 +195,7 @@ public class PantallaPrincipal extends javax.swing.JFrame {
     private void LabelBotonSalirMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LabelBotonSalirMouseExited
         ContenedorFondo.repaint();
         ContenedorFondo.revalidate();
+        // Quitamos el borde al salir
         BotonSalir.setBorder(null);
     }//GEN-LAST:event_LabelBotonSalirMouseExited
 
@@ -211,8 +214,9 @@ public class PantallaPrincipal extends javax.swing.JFrame {
 
     // Botón de jugar
     private void LabelBotonJugarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LabelBotonJugarMouseClicked
+        // Se reproduce un sonido al pulsar en JUGAR
         audio.play();
-        
+        // Abrimos la pantalla de registro
         PantallaRegistro p=new PantallaRegistro();
         p.setVisible(true);
         dispose();
